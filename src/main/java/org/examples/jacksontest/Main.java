@@ -2,6 +2,7 @@ package org.examples.jacksontest;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.google.common.base.Preconditions;
 
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class Main {
         String stringValue = xmlMapper.writeValueAsString(myType);
         System.out.println(stringValue);
         IMyType outputType = xmlMapper.readValue(stringValue, IMyType.class);
+        Preconditions.checkState(myType.equals(outputType));
     }
 
 }

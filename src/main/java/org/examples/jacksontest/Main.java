@@ -18,10 +18,10 @@ public class Main {
     public static void main(String[] args) throws JsonProcessingException {
         XmlMapper xmlMapper = XmlMapper.builder()
                 //.configure(FromXmlParser.Feature.EMPTY_ELEMENT_AS_NULL, true)
-                //.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, false)
+                //.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true)
                 .defaultUseWrapper(false).build();
 
-        MyType myType = new MyType(List.of("type1"));
+        MyType myType = new MyType(List.of("type1", "type2"));
 
         String stringValue = xmlMapper.writeValueAsString(myType);
         System.out.println(stringValue);

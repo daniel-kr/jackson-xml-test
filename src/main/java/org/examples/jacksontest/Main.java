@@ -21,13 +21,11 @@ public class Main {
                 //.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, false)
                 .defaultUseWrapper(false).build();
 
-        //IMyType myType = new MyType(new OtherType(List.of("cf.cplace.type")));
-
-        IOtherType myType = new OtherType(List.of("cf.cplace.type"));
+        IMyType myType = new MyType(new OtherType(List.of("cf.cplace.type", "type2")));
 
         String stringValue = xmlMapper.writeValueAsString(myType);
         System.out.println(stringValue);
-        IOtherType outputType = xmlMapper.readValue(stringValue, IOtherType.class);
+        IMyType outputType = xmlMapper.readValue(stringValue, IMyType.class);
         Preconditions.checkState(myType.equals(outputType));
 
     }
